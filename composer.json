@@ -1,0 +1,23 @@
+{
+    "name": "kuvardin/kz-identifiers",
+    "description": "Classes for Kazakhstan identifiers (БИН/ИИН)",
+    "type": "library",
+    "homepage": "https://github.com/kuvardin/KzIdentifiers",
+    "autoload": {
+        "psr-4": {
+            "Kuvardin\\KzIdentifiers\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maxim Kuvardin",
+            "email": "maxim@kuvard.in",
+            "homepage": "https://github.com/kuvardin"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "license": "MIT",
+    "minimum-stability": "dev"
+}
