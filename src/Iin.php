@@ -12,10 +12,9 @@ use RuntimeException;
  */
 class Iin extends KzIdentifier
 {
-    private function __construct(
-        readonly public string $value,
-    )
+    private function __construct(string $value)
     {
+        $this->value = $value;
     }
 
     public static function tryFrom(string $value): ?self

@@ -67,6 +67,6 @@ class Biin
 
     public function getValue(): string
     {
-        return $this->iin?->value ?? $this->bin?->value;
+        return $this->iin?->getValue() ?? $this->bin?->getValue();
     }
 }
