@@ -11,7 +11,7 @@ use RuntimeException;
 /**
  * Бизнес-идентификационный номер
  */
-class Bin
+class Bin extends KzIdentifier
 {
     private function __construct(
         readonly public string $value,

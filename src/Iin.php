@@ -10,7 +10,7 @@ use RuntimeException;
 /**
  * Индивидуальный идентификационный номер
  */
-class Iin
+class Iin extends KzIdentifier
 {
     private function __construct(
         readonly public string $value,

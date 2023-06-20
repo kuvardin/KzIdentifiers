@@ -61,31 +61,12 @@ class Biin
         for ($i = 0; $i < 11; $i++) {
             $result += (int)$iin[$i] * $weights[$i];
         }
+
         return $result % 11;
     }
 
     public function getValue(): string
     {
         return $this->iin?->value ?? $this->bin?->value;
-    }
-
-    public function isIin(): bool
-    {
-        return $this->iin !== null;
-    }
-
-    public function isBin(): bool
-    {
-        return $this->bin !== null;
-    }
-
-    public function getBin(): ?Bin
-    {
-        return $this->bin;
-    }
-
-    public function getIin(): ?Iin
-    {
-        return $this->iin;
     }
 }
