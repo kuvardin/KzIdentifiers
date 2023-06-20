@@ -34,7 +34,7 @@ class Biin
     {
         $result = self::tryFrom($value);
         if ($result === null) {
-            throw new RuntimeException("Incorrec BIIN: $value");
+            throw new RuntimeException("Incorrect BIIN: $value");
         }
 
         return $result;
@@ -63,6 +63,11 @@ class Biin
         }
 
         return $result % 11;
+    }
+
+    public function getIdentifier(): KzIdentifier
+    {
+        return $this->iin ?? $this->bin;
     }
 
     public function getValue(): string
