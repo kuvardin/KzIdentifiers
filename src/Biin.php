@@ -8,19 +8,36 @@ use RuntimeException;
 
 class Biin
 {
-    protected ?Bin $bin = null;
-
-    protected ?Iin $iin = null;
-
-    public function __construct(string $value)
+    private function __construct(
+        readonly public ?Bin $bin,
+        readonly public ?Iin $iin,
+    )
     {
-        if (Bin::checkValidity($value)) {
-            $this->bin = new Bin($value);
-        } elseif (Iin::checkValidity($value)) {
-            $this->iin = new Iin($value);
-        } else {
-            throw new RuntimeException("Incorrect identifier: $value");
+    }
+
+    public static function tryFrom(string $value): ?self
+    {
+        $bin = Bin::tryFrom($value);
+        if ($bin !== null) {
+            return new self($bin, null);
         }
+
+        $iin = Iin::tryFrom($value);
+        if ($iin !== null) {
+            return new self(null, $iin);
+        }
+
+        return null;
+    }
+
+    public function require(string $value): self
+    {
+        $result = self::tryFrom($value);
+        if ($result === null) {
+            throw new RuntimeException("Incorrec BIIN: $value");
+        }
+
+        return $result;
     }
 
     public static function checkValidity(string $value): bool

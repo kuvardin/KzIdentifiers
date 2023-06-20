@@ -13,15 +13,25 @@ use RuntimeException;
  */
 class Bin
 {
-    readonly public string $value;
-
-    public function __construct(string $value)
+    private function __construct(
+        readonly public string $value,
+    )
     {
-        if (!self::checkValidity($value)) {
-            throw new RuntimeException("Incorrect BIN: $value");
+    }
+
+    public static function tryFrom(string $value): ?self
+    {
+        return self::checkValidity($value) ? new self($value) : null;
+    }
+
+    public static function require(string $value): self
+    {
+        $result = self::tryFrom($value);
+        if ($result === null) {
+            throw new RuntimeException("Incorrect IIN: $value");
         }
 
-        $this->value = $value;
+        return $result;
     }
 
     public static function checkValidity(string $value): bool
