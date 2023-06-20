@@ -45,7 +45,7 @@ class Bin
             return false;
         }
 
-        return Iin::checkControl($value);
+        return Biin::checkControl($value);
     }
 
     public function getType(): BinType
